@@ -32,4 +32,8 @@
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
 
+    <string name="error_no_get_stock">No stocks geted! place close zhe page,try agane!</string>
+    
+    <string name="title_activity_stock_detail">Stock Detail</string>
+
 </resources>

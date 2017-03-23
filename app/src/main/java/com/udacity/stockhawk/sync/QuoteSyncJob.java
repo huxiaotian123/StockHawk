@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
@@ -20,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import timber.log.Timber;
 import yahoofinance.Stock;
@@ -40,6 +42,7 @@ public final class QuoteSyncJob {
     private QuoteSyncJob() {
     }
 
+    //查询股票列表
     static void getQuotes(Context context) {
 
         Timber.d("Running sync job");
@@ -71,9 +74,15 @@ public final class QuoteSyncJob {
             while (iterator.hasNext()) {
                 String symbol = iterator.next();
 
-
                 Stock stock = quotes.get(symbol);
+
                 StockQuote quote = stock.getQuote();
+
+                //get empty msg
+                if (null == quote || null == quote.getPrice()) {
+                    PrefUtils.removeStock(context, symbol);
+                    continue;
+                }
 
                 float price = quote.getPrice().floatValue();
                 float change = quote.getChange().floatValue();
@@ -113,11 +122,12 @@ public final class QuoteSyncJob {
             Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED);
             context.sendBroadcast(dataUpdatedIntent);
 
-        } catch (IOException exception) {
+        } catch (Exception exception) {
             Timber.e(exception, "Error fetching stock quotes");
         }
     }
 
+    //开启一个调度器
     private static void schedulePeriodic(Context context) {
         Timber.d("Scheduling a periodic task");
 
@@ -143,6 +153,8 @@ public final class QuoteSyncJob {
 
     }
 
+
+    //及时同步
     public static synchronized void syncImmediately(Context context) {
 
         ConnectivityManager cm =
@@ -152,7 +164,7 @@ public final class QuoteSyncJob {
             Intent nowIntent = new Intent(context, QuoteIntentService.class);
             context.startService(nowIntent);
         } else {
-
+            //开启一个延迟任务，等有网了之后执行
             JobInfo.Builder builder = new JobInfo.Builder(ONE_OFF_ID, new ComponentName(context, QuoteJobService.class));
 
 
@@ -167,6 +179,8 @@ public final class QuoteSyncJob {
 
         }
     }
+
+
 
 
 }
