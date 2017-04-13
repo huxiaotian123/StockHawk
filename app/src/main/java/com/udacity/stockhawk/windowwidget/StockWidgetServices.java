@@ -87,9 +87,9 @@ public class StockWidgetServices extends RemoteViewsService {
             DecimalFormat dollarFormatWithPlus = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
             dollarFormatWithPlus.setPositivePrefix("+");
             dollarFormatWithPlus.setMaximumFractionDigits(2);
+            dollarFormatWithPlus.setMinimumFractionDigits(2);
             dollarFormat.setMaximumFractionDigits(2);
             dollarFormat.setMinimumFractionDigits(2);
-            dollarFormatWithPlus.setMinimumFractionDigits(2);
 
             if (absoluteChange > 0) {
                 backgroundDrawable = R.drawable.percent_change_pill_red;

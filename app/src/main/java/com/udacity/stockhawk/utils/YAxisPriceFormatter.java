@@ -14,8 +14,8 @@ public class YAxisPriceFormatter implements IAxisValueFormatter {
     private final DecimalFormat dollarFormat;
 
     public YAxisPriceFormatter() {
-        dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.getDefault());
-        dollarFormat.setMaximumFractionDigits(0);
+        dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
+        dollarFormat.setMaximumFractionDigits(2);
     }
 
     @Override

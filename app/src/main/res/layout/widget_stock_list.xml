@@ -41,7 +41,7 @@
         <TextView
             android:id="@+id/widget_empty"
             android:gravity="center"
-            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            style="@style/Base.TextAppearance.AppCompat.Title"
             android:text="@string/empty_stock_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

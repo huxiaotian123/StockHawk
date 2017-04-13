@@ -196,22 +196,25 @@ public class StockDetailActivity extends AppCompatActivity implements LoaderMana
     private void initViewPager() {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         Bundle bundle = new Bundle();
-        StockDetailFragment monththFragment = new StockDetailFragment();
-        bundle.putString(UiUtil.getString(R.string.frgament_date_type_key),UiUtil.getString(R.string.month));
-        monththFragment.setArguments(bundle);
-        viewPagerAdapter.addFragment(monththFragment,UiUtil.getString(R.string.months_fragment_title));
-
-        bundle = new Bundle();
-        StockDetailFragment weekFragment = new StockDetailFragment();
-        bundle.putString(UiUtil.getString(R.string.frgament_date_type_key),UiUtil.getString(R.string.week));
-        weekFragment.setArguments(bundle);
-        viewPagerAdapter.addFragment(weekFragment,UiUtil.getString(R.string.weeks_fragment_title));
-
         bundle = new Bundle();
         StockDetailFragment dayFragment = new StockDetailFragment();
         bundle.putString(UiUtil.getString(R.string.frgament_date_type_key),UiUtil.getString(R.string.day));
         dayFragment.setArguments(bundle);
         viewPagerAdapter.addFragment(dayFragment,UiUtil.getString(R.string.days_fragment_title));
+
+
+
+        Bundle bundle1 = new Bundle();
+        StockDetailFragment weekFragment = new StockDetailFragment();
+        bundle1.putString(UiUtil.getString(R.string.frgament_date_type_key),UiUtil.getString(R.string.week));
+        weekFragment.setArguments(bundle1);
+        viewPagerAdapter.addFragment(weekFragment,UiUtil.getString(R.string.weeks_fragment_title));
+
+        Bundle bundle2 = new Bundle();
+        StockDetailFragment monththFragment = new StockDetailFragment();
+        bundle2.putString(UiUtil.getString(R.string.frgament_date_type_key),UiUtil.getString(R.string.month));
+        monththFragment.setArguments(bundle2);
+        viewPagerAdapter.addFragment(monththFragment,UiUtil.getString(R.string.months_fragment_title));
 
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(PAGE_LIMIT);

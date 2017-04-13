@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/stock_exchange"
-        style="@style/Base.TextAppearance.AppCompat.Subhead"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textStyle="normal"
         app:layout_columnSpan="2"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/day_lowest"
-        style="@style/Base.TextAppearance.AppCompat.Subhead"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
         android:gravity="center_horizontal"
         android:textColor="@color/white"
         android:textStyle="normal"

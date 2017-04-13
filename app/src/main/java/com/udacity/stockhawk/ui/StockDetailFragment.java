@@ -74,15 +74,15 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
             fragmentDataType = getArguments().getString(UiUtil.getString(R.string.frgament_date_type_key));
             if(fragmentDataType.equals(UiUtil.getString(R.string.month))){
                 dataColumnPosition = Contract.Quote.POSITION_MONTH_HISTORY;
-                dataFormat="MMM";
+                dataFormat="MMM"; //-->月份
                 LOADER_ID = 100;
             }else if(fragmentDataType.equals(UiUtil.getString(R.string.week))){
                 dataColumnPosition = Contract.Quote.POSITION_WEEK_HISTORY;
-                dataFormat="dd";
+                dataFormat="ww"; //-->一年中的周几
                 LOADER_ID = 200;
             }else {
                 dataColumnPosition = Contract.Quote.POSITION_DAY_HISTORY;
-                dataFormat = "dd";
+                dataFormat = "dd"; //-->第几个
                 LOADER_ID = 300;
             }
         }
@@ -116,7 +116,7 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
         Pair<Float,List<Entry>> result = Parser.getFormattedStockHistory(historyData);
         Float referenceTime = result.first;
         List<Entry> dataPairs = result.second;
-        Log.e("hxt",dataPairs.toString());
+
         LineDataSet dataSet = new LineDataSet(dataPairs,"");
         dataSet.setColor(white);
         dataSet.setLineWidth(2f);

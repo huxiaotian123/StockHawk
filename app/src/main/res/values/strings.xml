@@ -39,6 +39,7 @@
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
     <string name="error_no_get_stock">No stocks geted! place close zhe page,try agane!</string>
+    <string name="error_loading_stock">Stock Msg is Loading now,plase wait.</string>
     <string name="title_activity_stock_detail">Stock Detail</string>
     <string name="toast_stock_invalid">Symbol %s is invalid!</string>"
     <string name="empty_stock_list">Stock information is not available.</string>
@@ -65,9 +66,9 @@
     <string name="display_mode_change_cd">Display mode changed to %s</string>
     <string name="stock_increment_cd">Stock value increased by %s</string>
     <string name="stock_decrement_cd">Stock value decreased by %s</string>
-    <string name="days_fragment_title">5 DAYS</string>
-    <string name="weeks_fragment_title">5 WEEKS</string>
-    <string name="months_fragment_title">5 MONTHS</string>
+    <string name="days_fragment_title">10 DAYS</string>
+    <string name="weeks_fragment_title">10 WEEKS</string>
+    <string name="months_fragment_title">10 MONTHS</string>
     <string name="try_again">Try again</string>
     <string name="widget_cd">Stock hawk widget</string>
 

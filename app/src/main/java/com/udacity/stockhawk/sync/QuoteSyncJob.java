@@ -51,7 +51,8 @@ public final class QuoteSyncJob {
 
         Calendar from = Calendar.getInstance();
         Calendar to = Calendar.getInstance();
-        from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
+       //
+        // from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
 
         try {
 
@@ -120,16 +121,16 @@ public final class QuoteSyncJob {
 
 
                 from = Calendar.getInstance();
-                from.add(Calendar.MONTH, -4);
+                from.add(Calendar.MONTH, -9);
                 String monthHistory = getHistory(stock, from, to, Interval.MONTHLY);
 
 
                 from = Calendar.getInstance();
-                from.add(Calendar.DAY_OF_YEAR, -35);
+                from.add(Calendar.WEEK_OF_YEAR, -9);
                 String weekHistory = getHistory(stock, from, to, Interval.WEEKLY);
 
                 from = Calendar.getInstance();
-                from.add(Calendar.DAY_OF_YEAR, -5);
+                from.add(Calendar.DAY_OF_YEAR, -9);
                 String dayHistory = getHistory(stock, from, to, Interval.DAILY);
 
 //                Log.e("hxt-month",monthHistory);

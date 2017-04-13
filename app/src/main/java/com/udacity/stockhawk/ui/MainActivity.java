@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.LoaderManager;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Pair<View, String> priceViewPair = Pair.create((View) viewHolder.price, getString(R.string.stock_price_transition_name));
         Pair<View, String> changeViewPair = Pair.create((View) viewHolder.change, getString(R.string.stock_change_transition_name));
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this,priceViewPair,changeViewPair);
-        Log.e("hxt","1111");
+//        Log.e("hxt","1111");
         ActivityCompat.startActivity(this
                 ,intent,optionsCompat.toBundle());
 //        startActivity(intent);
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
                 PrefUtils.removeStock(MainActivity.this, symbol);
                 getContentResolver().delete(Contract.Quote.makeUriForStock(symbol), null, null);
+                error.setText(getString(R.string.error_no_stocks));
             }
         }).attachToRecyclerView(stockRecyclerView);
 
@@ -127,8 +130,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             error.setVisibility(View.VISIBLE);
         } else {
             swipeRefreshLayout.setRefreshing(true);
-            error.setText(getString(R.string.error_no_get_stock));
-            //error.setVisibility(View.GONE);
+//            error.setVisibility(View.GONE);
         }
     }
 
@@ -162,8 +164,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         swipeRefreshLayout.setRefreshing(false);
+        Log.e("hxt",data.getCount()+"-----"+ SystemClock.currentThreadTimeMillis());
         if (data.getCount() != 0) {
             error.setVisibility(View.GONE);
+        }else {
+            error.setText(getString(R.string.error_loading_stock));
+            error.setVisibility(View.VISIBLE);
         }
         adapter.setCursor(data);
     }
