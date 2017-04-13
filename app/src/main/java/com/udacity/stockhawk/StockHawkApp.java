@@ -6,9 +6,12 @@ import timber.log.Timber;
 
 public class StockHawkApp extends Application {
 
+    public static StockHawkApp app ;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        app = this;
 
         if (BuildConfig.DEBUG) {
             Timber.uprootAll();

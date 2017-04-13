@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/Toolbar</item>
+    </style>
+
+
+    <style name="AppTheme.Details" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/Toolbar</item>
+        <item name="android:windowContentTransitions">true</item>
+
+    </style>
+    <!--<style name="AppTheme.Details" parent="AppTheme">-->
+        <!--<item name="android:windowContentTransitions">true</item>-->
+        <!---->
+        <!--&lt;!&ndash;<item name="android:windowEnterTransition">@transition/details_window_transition</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowReturnTransition">@transition/details_window_transition</item>&ndash;&gt;-->
+    <!--</style>-->
+
+    <style name="AppTheme.Main" parent="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+</resources>
